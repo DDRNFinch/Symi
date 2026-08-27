@@ -6,9 +6,10 @@ const hub=readFileSync(new URL('../symi-course-hub-v018.js',import.meta.url),'ut
 const otj=readFileSync(new URL('../symi-otj-share-v017.js',import.meta.url),'utf8');
 const index=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const sw=readFileSync(new URL('../service-worker.js',import.meta.url),'utf8');
+const calendar=readFileSync(new URL('../symi-week-calendar-v023.js',import.meta.url),'utf8');
 const manifest=JSON.parse(readFileSync(new URL('../manifest.webmanifest',import.meta.url),'utf8'));
 
-test('Symi 0.18 makes Course the parent of delivery',()=>{
+test('Symi keeps Course as the parent of delivery',()=>{
   assert.match(hub,/COURSE DELIVERY/);
   assert.match(hub,/Sessions & lesson plans/);
   assert.match(hub,/Build course sessions/);
@@ -40,11 +41,15 @@ test('normal Symi OTJ receipts include attendance and remain anonymous',()=>{
   assert.doesNotMatch(payload,/name:|learnerId:/);
 });
 
-test('0.18 shell, cache and manifest are aligned',()=>{
-  assert.match(index,/symi-build" content="0\.18\.0"/);
-  assert.match(index,/symi-course-hub-v018\.js\?v=0\.18\.0/);
-  assert.match(sw,/const BUILD='0\.18\.0'/);
-  assert.match(sw,/symi-course-hub-v018\.js/);
+test('0.23 shell, calendar, cache and manifest are aligned',()=>{
+  assert.match(index,/symi-build" content="0\.23\.0"/);
+  assert.match(index,/symi-week-calendar-v023\.css\?v=0\.23\.0/);
+  assert.match(index,/symi-week-calendar-v023\.js\?v=0\.23\.0/);
+  assert.match(sw,/const BUILD='0\.23\.0'/);
+  assert.match(sw,/symi-week-calendar-v023\.js/);
+  assert.match(calendar,/Teaching calendar/);
+  assert.match(calendar,/lessonFor\(/);
+  assert.match(calendar,/classEvents\(/);
   assert.equal(manifest.short_name,'Symi');
-  assert.equal(manifest.start_url,'./?v=0.18.0');
+  assert.equal(manifest.start_url,'./?v=0.23.0');
 });
