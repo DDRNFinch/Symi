@@ -27,9 +27,10 @@ jobs:
           node --check symi-week-calendar-v023.js
           node --check symi-standard-ui-v024.js
           node --check symi-home-polish-v025.js
+          node --check symi-updater-v027.js
           node --check service-worker.js
       - name: Run Symi regression checks
         run: node --test tests/*.test.mjs
       - name: Validate manifests
         run: |
-          node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8')); JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8'));"
+          node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8')); JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); JSON.parse(require('fs').readFileSync('update.json','utf8'));"
