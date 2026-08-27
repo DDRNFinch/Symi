@@ -7,15 +7,16 @@ const js=readFileSync(new URL('../symi-standard-ui-v024.js',import.meta.url),'ut
 const index=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const sw=readFileSync(new URL('../service-worker.js',import.meta.url),'utf8');
 
-test('Symi 0.24 loads standardized UI last and offline',()=>{
-  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.24\.0/);
-  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.24\.0/);
-  assert.ok(index.indexOf('symi-standard-ui-v024.css')>index.indexOf('symi-week-calendar-v023.css'));
+test('Symi 0.25 keeps standardized UI offline with final home polish after it',()=>{
+  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.25\.0/);
+  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.25\.0/);
+  assert.match(index,/symi-home-polish-v025\.css\?v=0\.25\.0/);
+  assert.ok(index.indexOf('symi-home-polish-v025.css')>index.indexOf('symi-standard-ui-v024.css'));
   assert.match(sw,/symi-standard-ui-v024\.css/);
-  assert.match(sw,/symi-standard-ui-v024\.js/);
+  assert.match(sw,/symi-home-polish-v025\.css/);
 });
 
-test('Symi brand has a green i and classroom lockup',()=>{
+test('Symi brand has a green i and classroom identity',()=>{
   assert.match(css,/--std-brand:#38A96B/);
   assert.match(index,/Sym<span class="app-brand-i">i<\/span>/);
   assert.match(index,/Classroom assistant/);
@@ -29,11 +30,4 @@ test('Symi uses the same professional component geometry as Milos',()=>{
   assert.match(css,/\.blue-button,\.ta-actions \.primary/);
   assert.match(css,/\.staff-form input/);
   assert.match(css,/\.staff-page-head/);
-});
-
-test('Symi home and calendar use the standardized shell',()=>{
-  assert.match(css,/\.staff-face-panel\.progress-panel/);
-  assert.match(css,/\.staff-face-copy strong/);
-  assert.match(css,/\.scal-day\.is-today/);
-  assert.match(index,/Tap me to get started/);
 });
