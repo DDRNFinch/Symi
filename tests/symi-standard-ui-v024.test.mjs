@@ -8,10 +8,10 @@ const homeCss=readFileSync(new URL('../symi-home-polish-v025.css',import.meta.ur
 const index=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const sw=readFileSync(new URL('../service-worker.js',import.meta.url),'utf8');
 
-test('Symi 0.26 keeps standardized UI offline with final home polish after it',()=>{
-  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.26\.0/);
-  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.26\.0/);
-  assert.match(index,/symi-home-polish-v025\.css\?v=0\.26\.0/);
+test('Symi 0.27 keeps standardized UI offline with final home polish after it',()=>{
+  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.27\.0/);
+  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.27\.0/);
+  assert.match(index,/symi-home-polish-v025\.css\?v=0\.27\.0/);
   assert.ok(index.indexOf('symi-home-polish-v025.css')>index.indexOf('symi-standard-ui-v024.css'));
   assert.match(sw,/symi-standard-ui-v024\.css/);
   assert.match(sw,/symi-home-polish-v025\.css/);
