@@ -9,6 +9,7 @@ const ASSETS=[
   `./symi-standard-ui-v024.css?v=${BUILD}`,
   `./symi-calendar-manager-v025.css?v=${BUILD}`,
   `./symi-home-polish-v025.css?v=${BUILD}`,
+  `./symi-home-scale-v027.css?v=${BUILD}`,
   `./evia-animations.js?v=${BUILD}`,
   `./qr-engine.js?v=${BUILD}`,
   `./app.js?v=${BUILD}`,
