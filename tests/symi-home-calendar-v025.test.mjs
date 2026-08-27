@@ -7,21 +7,27 @@ const homeJs=readFileSync(new URL('../symi-home-polish-v025.js',import.meta.url)
 const calendar=readFileSync(new URL('../symi-week-calendar-v023.js',import.meta.url),'utf8');
 const managerCss=readFileSync(new URL('../symi-calendar-manager-v025.css',import.meta.url),'utf8');
 const index=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const sw=readFileSync(new URL('../service-worker.js',import.meta.url),'utf8');
 
-test('Symi home removes the old large header treatment and matches the centred assistant layout',()=>{
-  assert.match(homeCss,/\.app-header \.brand-word,\.app-header \.assessor-label\{display:none/);
+test('Symi home keeps the name top left and removes the duplicate centre name',()=>{
+  assert.match(homeCss,/\.app-header \.brand-word\{display:block/);
+  assert.match(homeCss,/\.staff-face-copy strong\{display:none/);
   assert.match(homeCss,/top:43\.5dvh/);
   assert.match(homeCss,/width:164px/);
-  assert.match(homeCss,/bottom:0/);
-  assert.match(homeJs,/Tap me to get started/);
-  assert.match(homeJs,/Sym<span class="app-brand-i">i<\/span>/);
-  assert.match(index,/symi-home-polish-v025\.css\?v=0\.25\.0/);
+  assert.match(index,/<div class="staff-face-copy"><span>Tap me to get started<\/span><\/div>/);
+  assert.doesNotMatch(index,/staff-face-copy"><strong>/);
+  assert.match(index,/symi-home-polish-v025\.css\?v=0\.26\.0/);
 });
 
-test('home copy is normalised to one brand line and one hint',()=>{
-  assert.match(homeJs,/copy\.innerHTML=expected/);
-  assert.match(homeJs,/slice\(1\)\.forEach\(el=>el\.remove\(\)\)/);
-  assert.match(homeCss,/\.staff-face-copy::before,.staff-face-copy::after/);
+test('home startup patch no longer runs a permanent mutation observer and can repair stale PWA state',()=>{
+  assert.doesNotMatch(homeJs,/new MutationObserver/);
+  assert.match(homeJs,/SamosApp\.openAssistantMenu/);
+  assert.match(homeJs,/repairStartup/);
+  assert.match(homeJs,/caches\.keys\(\)/);
+  assert.match(homeJs,/getRegistrations\(\)/);
+  assert.match(homeJs,/symi-startup-repair-026/);
+  assert.match(sw,/request\.mode==='navigate'/);
+  assert.doesNotMatch(sw,/catch\(\(\)=>caches\.match\(event\.request\).*index\.html/s);
 });
 
 test('calendar items open complete details',()=>{
