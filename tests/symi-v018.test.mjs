@@ -41,15 +41,18 @@ test('normal Symi OTJ receipts include attendance and remain anonymous',()=>{
   assert.doesNotMatch(payload,/name:|learnerId:/);
 });
 
-test('0.23 shell, calendar, cache and manifest are aligned',()=>{
-  assert.match(index,/symi-build" content="0\.23\.0"/);
-  assert.match(index,/symi-week-calendar-v023\.css\?v=0\.23\.0/);
-  assert.match(index,/symi-week-calendar-v023\.js\?v=0\.23\.0/);
-  assert.match(sw,/const BUILD='0\.23\.0'/);
+test('0.24 shell, calendar, standard UI, cache and manifest are aligned',()=>{
+  assert.match(index,/symi-build" content="0\.24\.0"/);
+  assert.match(index,/symi-week-calendar-v023\.css\?v=0\.24\.0/);
+  assert.match(index,/symi-week-calendar-v023\.js\?v=0\.24\.0/);
+  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.24\.0/);
+  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.24\.0/);
+  assert.match(sw,/const BUILD='0\.24\.0'/);
   assert.match(sw,/symi-week-calendar-v023\.js/);
+  assert.match(sw,/symi-standard-ui-v024\.js/);
   assert.match(calendar,/Teaching calendar/);
   assert.match(calendar,/lessonFor\(/);
   assert.match(calendar,/classEvents\(/);
   assert.equal(manifest.short_name,'Symi');
-  assert.equal(manifest.start_url,'./?v=0.23.0');
+  assert.equal(manifest.start_url,'./?v=0.24.0');
 });
