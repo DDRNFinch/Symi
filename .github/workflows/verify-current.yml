@@ -1,0 +1,32 @@
+name: Verify Symi
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check current JavaScript
+        run: |
+          node --check app.js
+          node --check naxos-controller.js
+          node --check symi-brand-v017.js
+          node --check symi-otj-share-v017.js
+          node --check symi-course-hub-v018.js
+          node --check service-worker.js
+      - name: Run Symi regression checks
+        run: node --test tests/*.test.mjs
+      - name: Validate manifests
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8')); JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8'));"
