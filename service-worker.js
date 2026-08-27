@@ -1,4 +1,4 @@
-const BUILD='0.17.0';
+const BUILD='0.18.0';
 const CACHE=`symi-${BUILD}`;
 const ASSETS=[
   './','./index.html',
@@ -11,6 +11,7 @@ const ASSETS=[
   `./naxos-controller.js?v=${BUILD}`,
   `./symi-brand-v017.js?v=${BUILD}`,
   `./symi-otj-share-v017.js?v=${BUILD}`,
+  `./symi-course-hub-v018.js?v=${BUILD}`,
   `./manifest.json?v=${BUILD}`,
   `./icon-192.png?v=${BUILD}`,
   `./icon-512.png?v=${BUILD}`,
