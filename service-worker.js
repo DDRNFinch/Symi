@@ -15,6 +15,7 @@ const ASSETS=[
   `./symi-teaching-v019.js?v=${BUILD}`,
   `./symi-attendance-cap-v020.js?v=${BUILD}`,
   `./symi-data-hub-v021.js?v=${BUILD}`,
+  `./symi-course-first-v021.js?v=${BUILD}`,
   `./manifest.json?v=${BUILD}`,
   `./icon-192.png?v=${BUILD}`,
   `./icon-512.png?v=${BUILD}`,
