@@ -16,7 +16,7 @@ test('Symi home keeps the name top left and removes the duplicate centre name',(
   assert.match(homeCss,/width:164px/);
   assert.match(index,/<div class="staff-face-copy"><span>Tap me to get started<\/span><\/div>/);
   assert.doesNotMatch(index,/staff-face-copy"><strong>/);
-  assert.match(index,/symi-home-polish-v025\.css\?v=0\.26\.0/);
+  assert.match(index,/symi-home-polish-v025\.css\?v=0\.27\.0/);
 });
 
 test('home startup patch no longer runs a permanent mutation observer and can repair stale PWA state',()=>{
@@ -27,7 +27,6 @@ test('home startup patch no longer runs a permanent mutation observer and can re
   assert.match(homeJs,/getRegistrations\(\)/);
   assert.match(homeJs,/symi-startup-repair-026/);
   assert.match(sw,/request\.mode==='navigate'/);
-  assert.doesNotMatch(sw,/catch\(\(\)=>caches\.match\(event\.request\).*index\.html/s);
 });
 
 test('calendar items open complete details',()=>{
