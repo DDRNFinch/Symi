@@ -1,4 +1,4 @@
-const BUILD='0.26.0';
+const BUILD='0.27.0';
 const CACHE=`symi-${BUILD}`;
 const ASSETS=[
   './','./index.html',
@@ -24,6 +24,7 @@ const ASSETS=[
   `./symi-week-calendar-v023.js?v=${BUILD}`,
   `./symi-standard-ui-v024.js?v=${BUILD}`,
   `./symi-home-polish-v025.js?v=${BUILD}`,
+  `./symi-updater-v027.js?v=${BUILD}`,
   `./manifest.json?v=${BUILD}`,
   `./manifest.webmanifest?v=${BUILD}`,
   `./icon-192.png?v=${BUILD}`,
@@ -56,34 +57,29 @@ self.addEventListener('fetch',event=>{
   const url=new URL(request.url);
   if(url.origin!==location.origin)return;
 
+  if(url.pathname.endsWith('/service-worker.js')||url.pathname.endsWith('/update.json')){
+    event.respondWith(fetch(request,{cache:'no-store'}));
+    return;
+  }
+
   if(request.mode==='navigate'){
     event.respondWith((async()=>{
-      try{
-        const response=await fetch(request,{cache:'no-store'});
-        if(response.ok){
-          const cache=await caches.open(CACHE);
-          await cache.put('./index.html',response.clone());
-        }
-        return response;
-      }catch(_){
-        return (await caches.match('./index.html'))||(await caches.match('./'))||Response.error();
-      }
+      const cache=await caches.open(CACHE);
+      const cached=(await cache.match('./index.html'))||(await cache.match('./'));
+      if(cached)return cached;
+      try{return await fetch(request,{cache:'no-store'});}catch(_){return Response.error();}
     })());
     return;
   }
 
   event.respondWith((async()=>{
+    const cache=await caches.open(CACHE);
+    const cached=await cache.match(request,{ignoreSearch:true});
+    if(cached)return cached;
     try{
       const response=await fetch(request,{cache:'no-store'});
-      if(response.ok){
-        const cache=await caches.open(CACHE);
-        await cache.put(request,response.clone());
-        return response;
-      }
-      const cached=await caches.match(request,{ignoreSearch:true});
-      return cached||response;
-    }catch(_){
-      return (await caches.match(request,{ignoreSearch:true}))||Response.error();
-    }
+      if(response&&response.ok)await cache.put(request,response.clone());
+      return response;
+    }catch(_){return Response.error();}
   })());
 });
