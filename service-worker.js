@@ -1,10 +1,11 @@
-const BUILD='0.22.0';
+const BUILD='0.23.0';
 const CACHE=`symi-${BUILD}`;
 const ASSETS=[
   './','./index.html',
   `./style.css?v=${BUILD}`,
   `./staff-style.css?v=${BUILD}`,
   `./samos-theme.css?v=${BUILD}`,
+  `./symi-week-calendar-v023.css?v=${BUILD}`,
   `./evia-animations.js?v=${BUILD}`,
   `./qr-engine.js?v=${BUILD}`,
   `./app.js?v=${BUILD}`,
@@ -16,6 +17,7 @@ const ASSETS=[
   `./symi-attendance-cap-v020.js?v=${BUILD}`,
   `./symi-data-hub-v021.js?v=${BUILD}`,
   `./symi-course-first-v021.js?v=${BUILD}`,
+  `./symi-week-calendar-v023.js?v=${BUILD}`,
   `./manifest.json?v=${BUILD}`,
   `./icon-192.png?v=${BUILD}`,
   `./icon-512.png?v=${BUILD}`,
