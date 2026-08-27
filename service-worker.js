@@ -1,4 +1,4 @@
-const BUILD='0.20.0';
+const BUILD='0.21.0';
 const CACHE=`symi-${BUILD}`;
 const ASSETS=[
   './','./index.html',
@@ -14,6 +14,7 @@ const ASSETS=[
   `./symi-course-hub-v018.js?v=${BUILD}`,
   `./symi-teaching-v019.js?v=${BUILD}`,
   `./symi-attendance-cap-v020.js?v=${BUILD}`,
+  `./symi-data-hub-v021.js?v=${BUILD}`,
   `./manifest.json?v=${BUILD}`,
   `./icon-192.png?v=${BUILD}`,
   `./icon-512.png?v=${BUILD}`,
