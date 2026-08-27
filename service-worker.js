@@ -1,5 +1,5 @@
-const BUILD='0.16.0';
-const CACHE=`samos-${BUILD}`;
+const BUILD='0.17.0';
+const CACHE=`symi-${BUILD}`;
 const ASSETS=[
   './','./index.html',
   `./style.css?v=${BUILD}`,
@@ -9,6 +9,8 @@ const ASSETS=[
   `./qr-engine.js?v=${BUILD}`,
   `./app.js?v=${BUILD}`,
   `./naxos-controller.js?v=${BUILD}`,
+  `./symi-brand-v017.js?v=${BUILD}`,
+  `./symi-otj-share-v017.js?v=${BUILD}`,
   `./manifest.json?v=${BUILD}`,
   `./icon-192.png?v=${BUILD}`,
   `./icon-512.png?v=${BUILD}`,
@@ -18,7 +20,7 @@ const ASSETS=[
   `./favicon-32.png?v=${BUILD}`
 ];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>/^samos-/i.test(k)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>/^(?:samos|symi)-/i.test(k)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('message',event=>{if(event.data==='SKIP_WAITING'||event.data?.type==='SKIP_WAITING')self.skipWaiting()});
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
