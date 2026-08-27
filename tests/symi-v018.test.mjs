@@ -41,18 +41,20 @@ test('normal Symi OTJ receipts include attendance and remain anonymous',()=>{
   assert.doesNotMatch(payload,/name:|learnerId:/);
 });
 
-test('0.24 shell, calendar, standard UI, cache and manifest are aligned',()=>{
-  assert.match(index,/symi-build" content="0\.24\.0"/);
-  assert.match(index,/symi-week-calendar-v023\.css\?v=0\.24\.0/);
-  assert.match(index,/symi-week-calendar-v023\.js\?v=0\.24\.0/);
-  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.24\.0/);
-  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.24\.0/);
-  assert.match(sw,/const BUILD='0\.24\.0'/);
-  assert.match(sw,/symi-week-calendar-v023\.js/);
-  assert.match(sw,/symi-standard-ui-v024\.js/);
-  assert.match(calendar,/Teaching calendar/);
-  assert.match(calendar,/lessonFor\(/);
-  assert.match(calendar,/classEvents\(/);
+test('0.25 shell calendar booking manager home polish cache and manifest are aligned',()=>{
+  assert.match(index,/symi-build" content="0\.25\.0"/);
+  assert.match(index,/symi-week-calendar-v023\.css\?v=0\.25\.0/);
+  assert.match(index,/symi-week-calendar-v023\.js\?v=0\.25\.0/);
+  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.25\.0/);
+  assert.match(index,/symi-calendar-manager-v025\.css\?v=0\.25\.0/);
+  assert.match(index,/symi-home-polish-v025\.css\?v=0\.25\.0/);
+  assert.match(index,/symi-home-polish-v025\.js\?v=0\.25\.0/);
+  assert.match(sw,/const BUILD='0\.25\.0'/);
+  assert.match(sw,/symi-calendar-manager-v025\.css/);
+  assert.match(sw,/symi-home-polish-v025\.js/);
+  assert.match(calendar,/function lessonFor\(/);
+  assert.match(calendar,/function classEvents\(/);
+  assert.match(calendar,/Edit \/ reschedule/);
   assert.equal(manifest.short_name,'Symi');
-  assert.equal(manifest.start_url,'./?v=0.24.0');
+  assert.equal(manifest.start_url,'./?v=0.25.0');
 });
