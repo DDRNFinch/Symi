@@ -24,6 +24,7 @@ jobs:
           node --check symi-brand-v017.js
           node --check symi-otj-share-v017.js
           node --check symi-course-hub-v018.js
+          node --check symi-week-calendar-v023.js
           node --check service-worker.js
       - name: Run Symi regression checks
         run: node --test tests/*.test.mjs
