@@ -1,0 +1,10 @@
+{
+  "version": "0.27.0",
+  "title": "Reliable Symi updates",
+  "details": [
+    "Symi now shows a visible message when a new version has been installed",
+    "Future Symi releases will show an Update available prompt instead of silently changing underneath the installed app",
+    "The offline shell now keeps one complete version together until an update is installed",
+    "Existing classroom data and current calendar, lesson and course features are retained"
+  ]
+}
