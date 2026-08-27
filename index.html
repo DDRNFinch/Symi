@@ -4,27 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#63c495">
-  <meta name="application-name" content="Samos">
-  <meta name="samos-build" content="0.16.0">
+  <meta name="application-name" content="Symi">
+  <meta name="samos-build" content="0.17.0">
+  <meta name="symi-build" content="0.17.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Samos">
-  <link rel="manifest" href="manifest.json?v=0.16.0">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=0.16.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=0.16.0">
-  <link rel="stylesheet" href="style.css?v=0.16.0">
-  <link rel="stylesheet" href="staff-style.css?v=0.16.0">
-  <link rel="stylesheet" href="samos-theme.css?v=0.16.0">
-  <title>Samos</title>
+  <meta name="apple-mobile-web-app-title" content="Symi">
+  <link rel="manifest" href="manifest.json?v=0.17.0">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=0.17.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=0.17.0">
+  <link rel="stylesheet" href="style.css?v=0.17.0">
+  <link rel="stylesheet" href="staff-style.css?v=0.17.0">
+  <link rel="stylesheet" href="samos-theme.css?v=0.17.0">
+  <title>Symi</title>
 </head>
 <body class="staff-mode samos-home-centred">
   <main>
     <header class="app-header">
       <div class="app-brand">
-        <b class="brand-word" id="samosBrand" aria-label="Samos">Sam<span class="brand-o" aria-hidden="true">o</span>s</b>
+        <b class="brand-word" id="samosBrand" aria-label="Symi">Symi</b>
         <small class="assessor-label">Classroom assistant</small>
-        <nav class="header-utility-actions" aria-label="Samos help and profile">
-          <button type="button" id="helpButton">Help/Samos</button>
+        <nav class="header-utility-actions" aria-label="Symi help and profile">
+          <button type="button" id="helpButton">Help/Symi</button>
           <button type="button" id="profileButton">Profile</button>
         </nav>
       </div>
@@ -33,10 +34,10 @@
       </div>
     </header>
 
-    <section class="progress-panel staff-face-panel" id="samosFacePanel" aria-label="Samos classroom assistant">
+    <section class="progress-panel staff-face-panel" id="samosFacePanel" aria-label="Symi classroom assistant">
       <div class="home-evia-space">
         <div class="home-evia-stage">
-          <button class="evia-face" id="eviaFace" type="button" aria-label="Open Samos classroom assistant">
+          <button class="evia-face" id="eviaFace" type="button" aria-label="Open Symi classroom assistant">
             <div class="evia-eyes"><span class="evia-eye eye-left"></span><span class="evia-eye eye-right"></span></div>
           </button>
         </div>
@@ -47,11 +48,11 @@
     <section id="staffApp" aria-live="polite"></section>
   </main>
 
-  <section class="evia-overlay" id="samosOverlay" aria-hidden="true" aria-label="Samos classroom assistant">
+  <section class="evia-overlay" id="samosOverlay" aria-hidden="true" aria-label="Symi classroom assistant">
     <div class="evia-wizard" role="dialog" aria-modal="true" aria-labelledby="samosPrompt">
       <div class="evia-toolbar">
         <button id="samosBack" type="button" aria-label="Back">&#8592;</button>
-        <button id="samosClose" type="button" aria-label="Close Samos">&#215;</button>
+        <button id="samosClose" type="button" aria-label="Close Symi">&#215;</button>
       </div>
       <div class="evia-stage">
         <div class="evia-face" aria-hidden="true">
@@ -59,7 +60,7 @@
         </div>
       </div>
       <div class="evia-copy" aria-live="polite">
-        <p class="evia-greeting">Samos</p>
+        <p class="evia-greeting">Symi</p>
         <h2 id="samosPrompt">What do you need?</h2>
         <p id="samosHint">Everything is organised into four clear areas.</p>
       </div>
@@ -116,7 +117,7 @@
 
   <dialog id="profileDialog" class="samos-dialog">
     <form method="dialog" id="profileForm" class="staff-form">
-      <div class="dialog-head"><div><small>SAMOS</small><h2>Profile</h2></div><button value="cancel" class="dialog-close" aria-label="Close">×</button></div>
+      <div class="dialog-head"><div><small>SYMI</small><h2>Profile</h2></div><button value="cancel" class="dialog-close" aria-label="Close">×</button></div>
       <section class="staff-card">
         <label>Your name<input id="teacherNameInput" maxlength="40" placeholder="Optional"></label>
         <label>Centre / department<input id="centreInput" maxlength="60" placeholder="Optional"></label>
@@ -144,10 +145,12 @@
   <section id="presentationPlayer" class="classroom-player presentation-player" aria-hidden="true"></section>
   <div class="save-toast" id="saveToast" role="status">Saved</div>
 
-  <script>window.SAMOS_BUILD='0.16.0';</script>
-  <script src="evia-animations.js?v=0.16.0"></script>
-  <script src="qr-engine.js?v=0.16.0"></script>
-  <script src="app.js?v=0.16.0"></script>
-  <script src="naxos-controller.js?v=0.16.0"></script>
+  <script>window.SAMOS_BUILD='0.17.0';window.SYMI_BUILD='0.17.0';</script>
+  <script src="evia-animations.js?v=0.17.0"></script>
+  <script src="qr-engine.js?v=0.17.0"></script>
+  <script src="app.js?v=0.17.0"></script>
+  <script src="naxos-controller.js?v=0.17.0"></script>
+  <script src="symi-brand-v017.js?v=0.17.0"></script>
+  <script src="symi-otj-share-v017.js?v=0.17.0"></script>
 </body>
 </html>
