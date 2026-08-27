@@ -4,23 +4,26 @@ import { readFileSync } from 'node:fs';
 
 const css=readFileSync(new URL('../symi-standard-ui-v024.css',import.meta.url),'utf8');
 const js=readFileSync(new URL('../symi-standard-ui-v024.js',import.meta.url),'utf8');
+const homeCss=readFileSync(new URL('../symi-home-polish-v025.css',import.meta.url),'utf8');
 const index=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const sw=readFileSync(new URL('../service-worker.js',import.meta.url),'utf8');
 
-test('Symi 0.25 keeps standardized UI offline with final home polish after it',()=>{
-  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.25\.0/);
-  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.25\.0/);
-  assert.match(index,/symi-home-polish-v025\.css\?v=0\.25\.0/);
+test('Symi 0.26 keeps standardized UI offline with final home polish after it',()=>{
+  assert.match(index,/symi-standard-ui-v024\.css\?v=0\.26\.0/);
+  assert.match(index,/symi-standard-ui-v024\.js\?v=0\.26\.0/);
+  assert.match(index,/symi-home-polish-v025\.css\?v=0\.26\.0/);
   assert.ok(index.indexOf('symi-home-polish-v025.css')>index.indexOf('symi-standard-ui-v024.css'));
   assert.match(sw,/symi-standard-ui-v024\.css/);
   assert.match(sw,/symi-home-polish-v025\.css/);
 });
 
-test('Symi brand has a green i and classroom identity',()=>{
+test('Symi brand has a green i and remains top left on home',()=>{
   assert.match(css,/--std-brand:#38A96B/);
   assert.match(index,/Sym<span class="app-brand-i">i<\/span>/);
   assert.match(index,/Classroom assistant/);
   assert.match(js,/Sym<span class="app-brand-i">i<\/span>/);
+  assert.match(homeCss,/\.app-header \.brand-word\{display:block/);
+  assert.match(homeCss,/left:max\(16px,env\(safe-area-inset-left\)\)/);
 });
 
 test('Symi uses the same professional component geometry as Milos',()=>{
